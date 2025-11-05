@@ -14,18 +14,12 @@ namespace CounterStrikeSharp.API.Modules.Admin
 
         public static void AddCommands()
         {
-            CommandManagerProvider.RegisterCommand(new CommandDefinition("css_admins_reload", "Reloads the admin file.",
-                ReloadAdminsCommand));
-            CommandManagerProvider.RegisterCommand(new CommandDefinition("css_admins_list",
-                "List admins and their flags.", ListAdminsCommand));
-            CommandManagerProvider.RegisterCommand(new CommandDefinition("css_groups_reload",
-                "Reloads the admin groups file.", ReloadAdminGroupsCommand));
-            CommandManagerProvider.RegisterCommand(new CommandDefinition("css_groups_list",
-                "List admin groups and their flags.", ListAdminGroupsCommand));
-            CommandManagerProvider.RegisterCommand(new CommandDefinition("css_overrides_reload",
-                "Reloads the admin command overrides file.", ReloadAdminOverridesCommand));
-            CommandManagerProvider.RegisterCommand(new CommandDefinition("css_overrides_list",
-                "List admin command overrides and their flags.", ListAdminOverridesCommand));
+            CommandManagerProvider.RegisterCommand(new CommandDefinition("css_admins_reload", "Reloads the admin file.", ReloadAdminsCommand));
+            CommandManagerProvider.RegisterCommand(new CommandDefinition("css_admins_list", "List admins and their flags.", ListAdminsCommand));
+            CommandManagerProvider.RegisterCommand(new CommandDefinition("css_groups_reload", "Reloads the admin groups file.", ReloadAdminGroupsCommand));
+            CommandManagerProvider.RegisterCommand(new CommandDefinition("css_groups_list", "List admin groups and their flags.", ListAdminGroupsCommand));
+            CommandManagerProvider.RegisterCommand(new CommandDefinition("css_overrides_reload", "Reloads the admin command overrides file.", ReloadAdminOverridesCommand));
+            CommandManagerProvider.RegisterCommand(new CommandDefinition("css_overrides_list", "List admin command overrides and their flags.", ListAdminOverridesCommand));
         }
 
         public static void MergeGroupPermsIntoAdmins()
@@ -36,7 +30,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             }
         }
 
-        [RequiresPermissions(permissions: "@css/generic")]
+        [RequiresPermissions(permissions: "@css/root")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private static void ReloadAdminsCommand(CCSPlayerController? player, CommandInfo command)
         {
@@ -46,7 +40,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             MergeGroupPermsIntoAdmins();
         }
 
-        [RequiresPermissions(permissions: "@css/generic")]
+        [RequiresPermissions(permissions: "@css/root")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private static void ListAdminsCommand(CCSPlayerController? player, CommandInfo command)
         {
@@ -60,7 +54,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             }
         }
 
-        [RequiresPermissions(permissions: "@css/generic")]
+        [RequiresPermissions(permissions: "@css/root")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private static void ReloadAdminGroupsCommand(CCSPlayerController? player, CommandInfo command)
         {
@@ -70,7 +64,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             MergeGroupPermsIntoAdmins();
         }
 
-        [RequiresPermissions(permissions: "@css/generic")]
+        [RequiresPermissions(permissions: "@css/root")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private static void ListAdminGroupsCommand(CCSPlayerController? player, CommandInfo command)
         {
@@ -80,7 +74,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             }
         }
 
-        [RequiresPermissions(permissions: "@css/generic")]
+        [RequiresPermissions(permissions: "@css/root")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private static void ReloadAdminOverridesCommand(CCSPlayerController? player, CommandInfo command)
         {
@@ -89,7 +83,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             LoadCommandOverrides(Path.Combine(rootDir.FullName, "configs", "admin_overrides.json"));
         }
 
-        [RequiresPermissions(permissions: "@css/generic")]
+        [RequiresPermissions(permissions: "@css/root")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private static void ListAdminOverridesCommand(CCSPlayerController? player, CommandInfo command)
         {

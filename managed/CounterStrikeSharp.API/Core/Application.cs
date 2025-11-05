@@ -125,7 +125,7 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        [RequiresPermissions("@css/generic")]
+        [RequiresPermissions("@css/root")]
         private void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
         {
             var versionString = $"v{Api.GetVersion()} ({Api.GetVersionString()})";
@@ -138,7 +138,7 @@ namespace CounterStrikeSharp.API.Core
             return;
         }
 
-        [RequiresPermissions("@css/generic")]
+        [RequiresPermissions("@css/root")]
         private void OnCSSPluginCommand(CCSPlayerController? caller, CommandInfo info)
         {
             switch (info.GetArg(1))
@@ -320,8 +320,7 @@ namespace CounterStrikeSharp.API.Core
             {
                 ExecutableBy = CommandUsage.CLIENT_AND_SERVER,
             });
-            _commandManager.RegisterCommand(new("css_plugins", "Counter-Strike Sharp plugin options.",
-                OnCSSPluginCommand)
+            _commandManager.RegisterCommand(new("css_plugins", "Counter-Strike Sharp plugin options.", OnCSSPluginCommand)
             {
                 ExecutableBy = CommandUsage.CLIENT_AND_SERVER,
                 MinArgs = 1,
